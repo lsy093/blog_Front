@@ -51,7 +51,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
@@ -73,6 +73,20 @@ export const constantRoutes = [
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+
+//添加测试页面路由
+  {
+    path: '/testTable',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'TestTable',
+        component: () => import('@/views/testTable/index'),
+        meta: { title: '测试Table页面', icon: 'table' }
       }
     ]
   },
