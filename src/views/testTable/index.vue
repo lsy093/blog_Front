@@ -8,13 +8,13 @@
       fit
       highlight-current-row
     >
-      <el-table-column prop="date" label="Date" width="180"></el-table-column>
-      <el-table-column prop="name" label="Name" width="180"></el-table-column>
+      <el-table-column prop="date" label="Date" width="150"></el-table-column>
+      <el-table-column prop="name" label="Name" width="150"></el-table-column>
       <el-table-column prop="address" label="Address"></el-table-column>
-      <el-table-column prop="button" label="Button" width="250">
-        <el-button type="primary" icon="el-icon-edit"></el-button>
-        <el-button type="primary" icon="el-icon-delete"></el-button>
-        <el-button type="primary" icon="el-icon-share"></el-button>
+      <el-table-column prop="button" label="Button" width="380">
+        <el-button type="primary" icon="el-icon-edit">修改</el-button>
+        <el-button type="primary" icon="el-icon-delete">删除</el-button>
+        <el-button type="primary" icon="el-icon-share">分享</el-button>
       </el-table-column>
     </el-table>
   </div>
