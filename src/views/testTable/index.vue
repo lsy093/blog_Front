@@ -1,29 +1,23 @@
 <template>
-  <div class="app-container">
-    <el-table
-      v-loading="listLoading"
-      :data="tableData"
-      element-loading-text="Loading"
-      border
-      fit
-      highlight-current-row
-    >
-      <el-table-column prop="name" label="姓名" width="150"></el-table-column>
-      <el-table-column prop="date" label="出生日期" width="150"></el-table-column>
-      <el-table-column prop="address" label="家庭住址"></el-table-column>
-
-      <el-table-column prop="button" label="Button" width="380">
-        <template slot-scope="{row,$index}">
-          <el-button type="primary" @click="Edit(row,$index)">修改</el-button>
-          <el-button type="danger" @click="delOffice(row.id)">删除</el-button>
-          <el-button type="primary" @click="addOffice(row)">添加下级机构</el-button>
-        </template>
-        <!-- <el-button type="primary" icon="el-icon-edit" @click="Edit">修改</el-button>
-        <el-button type="primary" icon="el-icon-delete">删除</el-button>
-        <el-button type="primary" icon="el-icon-share">分享</el-button> -->
-      </el-table-column>
-    </el-table>
-  </div>
+  <el-table
+    :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+    style="width: 100%"
+  >
+    <el-table-column label="Name" prop="name"></el-table-column>
+    <el-table-column label="Sex" prop="sex"></el-table-column>
+    <el-table-column label="Date" prop="date"></el-table-column>
+    <el-table-column label="Address" prop="address"></el-table-column>
+    <el-table-column label="Phone" prop="phone"></el-table-column>
+    <el-table-column align="right">
+      <!-- <template slot="header" slot-scope="scope">
+        <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
+      </template> -->
+      <template slot-scope="scope">
+        <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
+        <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
 <script>
 export default {
@@ -32,6 +26,7 @@ export default {
       tableData: [
         {
           date: "2020-05-01",
+          sex:"男",
           name: "Tom1",
           address: "No. 181, Grove St, Los Angeles",
         },
@@ -73,9 +68,16 @@ export default {
       this.$router.push({
         path: "/form/index",
         query: {
-          row: row
+          row: row,
         },
       });
+    },
+    handleEdit(index, row) {
+      console.log(index, row);
+      this.$router.push({ path: "/form/index", query: { row: row } });
+    },
+    handleDelete(index, row) {
+      console.log(index, row);
     },
   },
 };

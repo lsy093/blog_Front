@@ -61,8 +61,5 @@ export default {
 .line {
   text-align: center;
 }
-.dialog-input-text >>> .el-input__inner {
-  width: 50px;
-}
 </style>
 
